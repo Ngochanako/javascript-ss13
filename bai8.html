@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .main{
+
+        }
+        .navbar{
+            background-color: brown;
+            color: white;
+            font-weight: 600;
+            font-size: 30px;
+            padding: 10px;
+        }
+        .input{
+           display: grid;
+           grid-template-columns: auto auto;      
+        }
+        input{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+         <nav class="navbar">Weight Converter</nav>
+         <p>Type a value in any of the fields to convert between weight measurements:</p>
+         <div class="input">
+            <div class="item">
+                <p>Pounds</p>
+                <input type="num" id="pound" >
+            </div>
+            <div class="item">
+                <p>Kilograms</p>
+                <input type="num" id="kilogram">
+            </div>
+            <div class="item">
+                <p>Ounces</p>
+                <input type="num" id="ounce">
+            </div>
+            <div class="item">
+                <p>Grams</p>
+                <input type="num" id="gram">
+            </div>
+            <div class="item">
+                <p>Stones</p>
+                <input type="num" id="stone">
+            </div>
+         </div>
+    </main>
+    <script>
+        let pound=document.getElementById("pound");
+        let kilogram=document.getElementById("kilogram");
+        let ounce=document.getElementById("ounce");
+        let gram=document.getElementById("gram");
+        let stone=document.getElementById("stone");
+        document.getElementById("pound").addEventListener('input',function(){
+            let poundInput =+this.value;
+            kilogram.value=poundInput/2;
+            ounce.value=poundInput*18;
+            gram.value=poundInput*450;
+            stone.value=(poundInput/11).toFixed(2);
+            
+        })
+    </script>
+</body>
+</html>

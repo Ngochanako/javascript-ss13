@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+           box-sizing: border-box;
+        }
+        body{
+            font-family:'Noto Sans', sans-serif;
+        }
+        .container{
+            background-color:rgb(50,57,138) ;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 30px;
+            
+            background-color: rgb(32,34,79);
+        }
+        .headbar{
+            font-size: 30px !important;
+            text-align: center;
+        }
+        .inputPass{
+            width: 100%;
+            position: relative;
+        }
+        .inputText{
+            width: 100%;
+            padding: 10px;
+        }
+        .material-symbols-outlined{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: black;
+        }
+        .main{
+            display: flex;
+            gap: 50px;
+        }
+        .mainText{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .checkbox{
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        #passLength{
+            width: 30px;
+        }
+        button{
+            padding: 10px;
+            font-weight: 600;
+            color: grey;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main>
+            <nav class="headbar">Password Generator</nav>
+            <div class="inputPass">
+                <input type="text" class="inputText">
+                <span class="material-symbols-outlined">
+                    edit_square
+                </span>
+            </div>
+            <div class="main">
+                <div class="mainText">
+                    <p>Password Length</p>
+                    <p>Include uppercase letters</p>
+                    <p>Include lowercase letters</p>
+                    <p>Include numbers</p>
+                    <p>Include symbols</p>
+                </div>
+                <div class="checkbox">
+                    <input type="number" id="passLength">
+                    <input type="checkbox" id="uppercase">
+                    <input type="checkbox" id="lowercase">
+                    <input type="checkbox" id="number">
+                    <input type="checkbox" id="symbol">
+                </div>
+            </div>
+            <button id="generator">Generator Password</button>
+        </main>
+    </div>
+    <script>
+       
+        document.getElementById("generator").addEventListener('click',generatePass);
+        function generatePass(){
+            let number="0123456789";
+            let uppercase="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let lowercase="abcdefghijklmnopqrstuvwxyz";
+            let symbol="!@#$%^&*_-+=";
+            let passGenerator=document.getElementsByClassName("inputText")[0];
+            let passLength=document.getElementById("passLength").value;
+            console.log(passLength)
+            let uppercases=document.getElementById("uppercase").checked;
+            console.log(uppercases)
+            let lowercases=document.getElementById("lowercase").checked;
+            console.log(lowercases)
+            let numbers=document.getElementById("number").checked;
+            let symbols=document.getElementById("symbol").checked;
+            let pass="";
+            if(uppercases){
+                pass+=uppercase;
+            }
+            if(lowercases){
+                pass+=lowercase;
+            }
+            if(numbers){
+                pass+=number;
+            }
+            if(symbols){
+                pass+=symbol;
+            }
+            console.log(pass)
+            let Password=""
+            for(let i=0;i<passLength;i++){
+                console.log(pass.charAt(Math.floor(Math.random()*passLength)))
+                Password+=pass.charAt(Math.floor(Math.random()*passLength));   
+                console.log(Password)    
+            }
+            console.log(passGenerator)
+            passGenerator.value=Password;
+        }
+    </script>
+</body>
+</html>

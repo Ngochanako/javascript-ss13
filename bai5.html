@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+        padding: 200px ;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+        display: flex;
+        color: white;
+        font-size: 30px;
+        font-weight: 600;
+        justify-content: space-between;
+        }
+        .box{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    </style>
+    
+</head>
+<body onload="load()">
+    <div class="container">
+        <div class="box">
+            <i class="fa-brands fa-twitter"></i>
+            <p class="num1">12000</p>
+            <p class="text">Twitter Follower</p>
+        </div>
+        <div class="box">
+            <i class="fa-brands fa-youtube"></i>
+            <p class="num2">5000</p>
+            <p class="text">Twitter Follower</p>
+        </div>
+        <div class="box">
+            <i class="fa-brands fa-facebook"></i>
+            <p class="num3">7500</p>
+            <p class="text">Twitter Follower</p>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/3ad9c91d81.js" crossorigin="anonymous">
+    </script>
+    <script>
+         function load(){
+            let number1=0,number2=0,number3=0;
+            var interval1=setInterval(function(){
+                document.getElementsByClassName("num1")[0].innerHTML=number1;
+                number1++;
+                if(number1>12000){
+                    clearInterval(interval1);
+                }
+            },1000);
+            var interval2=setInterval(function(){
+                document.getElementsByClassName("num2")[0].innerHTML=number2;
+                number2++;
+                if(number2>5000){
+                    clearInterval(interval2);
+                }
+            },1000);
+            var interval1=setInterval(function(){
+                document.getElementsByClassName("num3")[0].innerHTML=number3;
+                number3++;
+                if(number3>7500){
+                    clearInterval(interval1);
+                }
+            },1000);
+         }
+    </script>
+</body>
+</html>

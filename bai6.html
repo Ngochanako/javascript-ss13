@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            font-size: 18px;
+            padding: 30px;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: grey;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            color: white;
+            opacity: 0.9;
+        }
+        .largeGlass{
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            height: 300px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            background-color: brown;
+        }
+        .remain{
+            
+            background-color:rgb(119, 146, 128) ;
+            text-align: center;
+        }
+        .drink{
+            height: 50%;
+            display: flex;
+            padding-top: 10px;
+            justify-content: center;
+        }
+        .smallGlass{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+           gap: 20px;
+        }
+        .itemGlass{
+            padding: 10px;
+            width: 50px;
+            height: 100px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: brown;
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drink Water</h1>
+        <p>Goal: 2Liters</p>
+        <div class="largeGlass">
+            <div class="remain" style="height: 100%;">   
+                Remained
+            </div>
+            <div class="drink">
+                 <p id="drinked">0</p>
+                 <p>%</p>
+            </div>
+        </div>
+        <p>Select how many glasses of water that you have drank</p>
+        <div class="smallGlass" id="list">
+             <!-- <div class="itemGlass">250 ml</div>
+             <div class="itemGlass">250 ml</div>
+             <div class="itemGlass">250 ml</div>
+             <div class="itemGlass">250 ml</div>
+             <div class="itemGlass">250 ml</div>
+             <div class="itemGlass">250 ml</div>
+             <div class="itemGlass">250 ml</div>
+             <div class="itemGlass">250 ml</div> -->
+        </div>
+    </div>
+    <script>
+        let listGlass=[
+            {
+                num:250,
+                id:1
+            },
+            {
+                num:250,
+                id:2
+            },
+            {
+                num:250,
+                id:3
+            },
+            {
+                num:250,
+                id:4
+            },
+            {
+                num:250,
+                id:5
+            },
+            {
+                num:250,
+                id:6
+            },
+            {
+                num:250,
+                id:7
+            },
+            {
+                num:250,
+                id:8
+            },
+        ]
+        let smallGlassList=document.getElementById("list");
+        for(let x of listGlass){
+            let item=`<div class="itemGlass" id="${x.id}">${x.num} ml</div>`;
+            smallGlassList.innerHTML+=item;
+        }
+        let list=document.getElementsByClassName("itemGlass");
+        for(let btn of list){
+            btn.onclick=function check(){
+                if(btn.innerHTML=="250 ml"){
+                    let x=parseFloat(document.getElementById("drinked").innerHTML);
+                    console.log(x)
+                    btn.innerHTML="0 ml";
+                    btn.style.backgroundColor="rgb(119, 146, 128)";
+                    let y=(x*20+250)/20;
+                    if(y==100){
+                        document.getElementsByClassName("remain")[0].innerHTML="";
+                    }
+                    document.getElementById("drinked").innerHTML=y;
+                    document.getElementsByClassName("remain")[0].style.transition="2s"
+                    document.getElementsByClassName("remain")[0].style.height=100-y+"%";
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<style>
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+    .input{
+        width: 300px;
+        position: relative;
+
+    }
+    input{
+        width: 100%;
+        padding-left: 30px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .material-symbols-outlined{
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+    table,th,td{
+        padding: 5px;
+        margin-top: 20px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    th{
+        background-color: rgb(210, 206, 206);
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="input">
+             <input type="search" placeholder="Search for name" id="searchName">
+             <span class="material-symbols-outlined">
+                search
+            </span>
+        </div>
+        <table id="tb">
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+            </tr>
+            <!-- <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>Berglunds snabbkop</td>
+                <td>Swedden</td>
+            </tr>
+            <tr>
+                <td>Island Trading</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>North</td>
+                <td>UK</td>
+            </tr>
+            <tr>
+                <td>Paris</td>
+                <td>France</td>
+            </tr> -->
+        </table>
+    </div>
+    <script>
+        let list=[
+            {
+                name:"Alfreds Futterkiste",
+                country:"Germany",
+            },
+            {
+                name:"Berglunds snabbkop",
+                country:"Swedden",  
+            },
+            {
+                name:"Island Trading",
+                country:"England",  
+            },
+            {
+                name:"North",
+                country:"Uk",  
+            },
+            {
+                name:"Paris",
+                country:"France",  
+            },
+        ]
+        let tableE=document.getElementById("tb");
+        for(let x of list){
+            let trE=document.createElement("tr");
+            trE.innerHTML=`<td> ${x.name}</td>
+                <td> ${x.country}</td>`
+            tableE.appendChild(trE);
+        }
+        document.getElementById("searchName").addEventListener('input',function(){
+            tableE.innerHTML="";
+            let searchValue=document.getElementById("searchName").value.toLowerCase();
+            for(let x of list){
+                let nameValue=x.name.toLowerCase();
+                if(nameValue.indexOf(searchValue)!==-1){
+                    let trE=document.createElement("tr");
+                    trE.innerHTML=`<td> ${x.name}</td>
+                                   <td> ${x.country}</td>`
+                    tableE.appendChild(trE);
+                }
+            }
+        })       
+    </script>
+</body>
+</html>
